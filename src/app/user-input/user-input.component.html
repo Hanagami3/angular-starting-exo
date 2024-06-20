@@ -1,0 +1,27 @@
+<form >
+    <div class="input-group" (ngSumit)="onSubmit">
+        <p>
+            <label for="initial investment">Initial Investment</label>
+            <input type="text" id="initial investment" name="initial investment">
+        </p>
+        <p>
+            <label for="annual investment">Annual Investment</label>
+            <input type="text" name="annual investment" id="annual investment">
+        </p>
+    </div>
+    <div class="input-group">
+        <p>
+            <label for="expected return">Expected Return</label>
+            <input type="text" name="expected return" id="expected return">
+        </p>
+        <p>
+            <label for="duration">duration</label>
+            <input type="text" name="duration" id="duration">
+        </p>
+    </div>
+    <div>
+        <button type="button">CALCULATE</button>
+    </div>
+</form>
+<p class="center">Please enter some values and press "Calculate"</p>
+
