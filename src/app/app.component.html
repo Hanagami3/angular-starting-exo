@@ -1,4 +1,8 @@
-<app-header></app-header> 
+<app-header/> 
 <main>
-    <app-user-input></app-user-input>
+    <!-- Souvent comme ça, un component pour prendre les inputs et un autre pour en faire quelque chose et afficher 
+    <app-user-input (calculate)="onCalculateInvestmentResults($event)"/>
+    <app-investment-results [results]="resultsData()"/>-->
+    <app-user-input/>
+    <app-investment-results/>
 </main>

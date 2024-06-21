@@ -6,3 +6,4 @@ export interface InvestmentResultsData{
     year: number
     investedCapital: number
 }
+

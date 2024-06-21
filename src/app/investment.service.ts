@@ -1,31 +1,25 @@
-import { Component, Signal, signal } from '@angular/core';
-import { HeaderComponent } from './header/header.component';
-import { UserInputComponent } from './user-input/user-input.component';
-import type { InvestmentInput } from './investment-input.model';
-import { InvestmentResultsComponent } from './investment-results/investment-results.component';
+import { Injectable, signal } from '@angular/core';
+import { InvestmentInput } from './investment-input.model';
 
 
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  templateUrl: './app.component.html',
-  imports: [HeaderComponent, UserInputComponent, InvestmentResultsComponent]
-})
-export class AppComponent {
-  resultsData = signal<{
+@Injectable({providedIn: 'root'})
+export class InvestmentService {
+  resultData= signal<{
     year: number,
     interest: number,
     valueEndOfYear: number,
     annualInvestment: number,
     totalInterest: number,
     totalAmountInvested: number,
-  }[] | undefined>(undefined)
-  
-  onCalculateInvestmentResults(data: InvestmentInput) {
+}[] | undefined>(undefined)
+
+  constructor() { }
+
+  calculateInvestmentResults( data: InvestmentInput,){
     const { initialInvestment, annualInvestment, expectedReturn, duration} = data
     const annualData = [];
     let investmentValue = initialInvestment;
-  
+
     for (let i = 0; i < duration; i++) {
       const year = i + 1;
       const interestEarnedInYear = investmentValue * (expectedReturn / 100);
@@ -41,7 +35,7 @@ export class AppComponent {
         totalAmountInvested: initialInvestment + annualInvestment * year,
       });
     }
-    this.resultsData.set(annualData)
+    this.resultData.set(annualData)
+    //this.resultData = annualData
   }
 }
-
